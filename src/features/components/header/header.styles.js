@@ -1,6 +1,7 @@
 import { SafeAreaView, StatusBar, ImageBackground } from "react-native";
 import styled from "styled-components/native";
 import { Card, Button } from "react-native-paper";
+import { LinearGradient } from "expo-linear-gradient";
 
 export const HeaderWrapper = styled(Card)`
   flex: 0.4;
@@ -36,4 +37,23 @@ export const HeaderButton = styled(Button).attrs({
 })`
   width: 100px;
   padding-left: 10px;
+  margin: 5px;
+`;
+
+export const HeaderButtonContainer = styled.View`
+  flex-direction: row;
+  margin-left: 5px;
+`;
+
+export const HeaderLinearGradient = styled(LinearGradient).attrs({
+  colors: [
+    "to left, rgba(2,68,100, 0.8) 0%, rgba(2,68,100, 0) 100%,)",
+    "transparent",
+  ],
+})`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 300px;
 `;

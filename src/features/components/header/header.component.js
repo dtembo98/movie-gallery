@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 import { config } from "../../../services/config";
 import {
   HeaderWrapper,
@@ -10,40 +9,51 @@ import {
   TextContainer,
   TextDetails,
   HeaderButton,
+  HeaderButtonContainer,
+  HeaderLinearGradient,
 } from "./header.styles";
 
-export const Header = () => {
+export const Header = ({ movies = [] }) => {
+  const [movie, setMovie] = useState({});
+  const [genre, setGenre] = useState();
+
+  useEffect(() => {
+    const { genre, data } = movies[0];
+    const firstMovie = data[0];
+    setMovie(firstMovie);
+    setGenre(genre);
+  }, []);
+
+  const image = {
+    uri: movie
+      ? config.BASE_IMAGE_URL + `/${config.IMAGE_SIZE.LG}` + movie.posterPath
+      : null,
+  };
+
   return (
     <HeaderWrapper>
-      <ImageCover
-        source={{
-          uri: config.BASE_IMAGE_URL + "w1280/bZnOioDq1ldaxKfUoj3DenHU7mp.jpg",
-        }}>
-        <LinearGradient
-          // Background Linear Gradient
-          colors={[
-            "to left, rgba(2,68,100, 0.8) 0%, rgba(2,68,100, 0) 100%,)",
-            "transparent",
-          ]}
-          style={styles.background}
+      <ImageCover source={image}>
+        <HeaderLinearGradient
+        // Background Linear Gradient
         />
         <TextContainer>
-          <Title> The burnout</Title>
+          <Title> {movie ? movie.originalTitle : ""}</Title>
           <TextDetails>
-            <Text>Action | Rated R | 2020</Text>
+            <Text>
+              {genre ? genre : ""} | Rated |
+              {movie
+                ? movie.releaseDate
+                  ? movie.releaseDate.split("-")[0]
+                  : null
+                : ""}
+            </Text>
           </TextDetails>
-          <HeaderButton>Details</HeaderButton>
+          <HeaderButtonContainer>
+            <HeaderButton>Details</HeaderButton>
+            <HeaderButton>Add +</HeaderButton>
+          </HeaderButtonContainer>
         </TextContainer>
       </ImageCover>
     </HeaderWrapper>
   );
 };
-const styles = StyleSheet.create({
-  background: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: 300,
-  },
-});

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
+import { ImageBackground, TouchableOpacity } from "react-native";
 
 import styled from "styled-components/native";
 import { Card, Button } from "react-native-paper";
 import { config } from "../../../services/config";
 import { BlurView } from "expo-blur";
+import { useEffect } from "react/cjs/react.development";
 
 const CardWrapper = styled(Card)`
   background-color: #252250;
@@ -58,23 +59,39 @@ const MovieCardButton = styled(Button).attrs({
   margin: 4px;
   border: #fff 1px;
 `;
-export const MovieCard = () => {
+export function MovieCard({ movie = {}, navigation }) {
   const [isCardPressed, setIsCardPressed] = useState(false);
+  const [cardMovie, setCardMovie] = useState(null);
+  const handlePress = () => {
+    setIsCardPressed(!isCardPressed);
+  };
+  const handleDetails = () => {
+    return navigation.navigate("MovieDetails", { movie });
+  };
+  const handleAdd = () => {
+    console.log("Add");
+  };
+
+  const image = {
+    uri: cardMovie
+      ? config.BASE_IMAGE_URL +
+        `/${config.IMAGE_SIZE.MD}` +
+        cardMovie.posterPath
+      : "https://lh3.googleusercontent.com/proxy/BOwUj6M_wMToA6jVxqt9ATQpbAk2uM50NmjLlXwpL9rmPOlXj6vcs05Qb5Laslx-MDIGSItnY0uqd5nlcJd1V-0if7VEE3yDX_ONZh3ZgISgIUojhmzxrjKa_kFGvVyl4lxJ583nVPdXroOuHLcS996vWvJk0LL9JIldrrLLKFBh4XXfcRHTQZVzJC8jo9o-waPtjQVsvkGU",
+  };
+  useEffect(() => {
+    if (movie) {
+      setCardMovie(movie);
+    }
+  }, []);
   return (
-    <TouchableOpacity
-      onPress={(event) => {
-        setIsCardPressed(!isCardPressed);
-      }}>
+    <TouchableOpacity onPress={handlePress}>
       <CardWrapper>
-        <CardImageCover
-          source={{
-            uri:
-              config.BASE_IMAGE_URL + "w1280/bZnOioDq1ldaxKfUoj3DenHU7mp.jpg",
-          }}>
+        <CardImageCover source={image}>
           {isCardPressed ? (
             <MovieCardActions>
-              <MovieCardButton>Details</MovieCardButton>
-              <MovieCardButton>+ Add</MovieCardButton>
+              <MovieCardButton onPress={handleDetails}>Details</MovieCardButton>
+              <MovieCardButton onPress={handleAdd}>+ Add</MovieCardButton>
             </MovieCardActions>
           ) : null}
           {/* <TitleContainer>
@@ -84,4 +101,6 @@ export const MovieCard = () => {
       </CardWrapper>
     </TouchableOpacity>
   );
-};
+}
+
+export const MemoizedMovieCard = React.memo(MovieCard);
