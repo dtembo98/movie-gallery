@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
 import { config } from "../../../services/config";
+import { FavouriteButton } from "../../../components/favourite-button/favourite-button.component";
+import { DetailsButton } from "../../../components/details-button/details-button.component";
 import { Text } from "../../../components/typography/text.component";
 import {
   HeaderWrapper,
@@ -8,7 +11,6 @@ import {
   ImageCover,
   TextContainer,
   TextDetails,
-  HeaderButton,
   HeaderButtonContainer,
   HeaderLinearGradient,
 } from "./header.styles";
@@ -16,10 +18,6 @@ import {
 export const Header = ({ movies = [], navigation }) => {
   const [movie, setMovie] = useState({});
   const [genre, setGenre] = useState();
-
-  const handleOnPressDetailsButton = () => {
-    return navigation.navigate("MovieDetails", { movie: movie });
-  };
 
   useEffect(() => {
     const { genre, data } = movies[0];
@@ -44,7 +42,7 @@ export const Header = ({ movies = [], navigation }) => {
           <Title> {movie ? movie.originalTitle : ""}</Title>
           <TextDetails>
             <Text>
-              {genre ? genre : ""} | Rated |
+              {genre ? genre : ""} | Rated {movie.adult ? "R " : "G "} |{" "}
               {movie
                 ? movie.releaseDate
                   ? movie.releaseDate.split("-")[0]
@@ -53,10 +51,8 @@ export const Header = ({ movies = [], navigation }) => {
             </Text>
           </TextDetails>
           <HeaderButtonContainer>
-            <HeaderButton onPress={handleOnPressDetailsButton}>
-              Details
-            </HeaderButton>
-            <HeaderButton>Add +</HeaderButton>
+            <DetailsButton movie={movie} navigation={navigation} />
+            <FavouriteButton movie={movie} />
           </HeaderButtonContainer>
         </TextContainer>
       </ImageCover>

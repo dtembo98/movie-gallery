@@ -1,12 +1,26 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components/native";
-import { Card, Button } from "react-native-paper";
-import { ImageBackground, FlatList } from "react-native";
+import { FlatList } from "react-native";
 
 import { SafeArea } from "../../components/utility/safe-area.component";
-import { MovieCard } from "../components/MovieCard/moviecard.component";
+import { Text } from "../../components/typography/text.component";
 import { FavouriteMovieContext } from "../../services/favourites/favourites.context";
 import { MemoizedMovieCard } from "../components/MovieCard/moviecard.component";
+
+const MyMovieListContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+ padding-top:${(props) => props.theme.space[4]}
+   padding-left:${(props) => props.theme.space[4]}
+  background-color: ${(props) => props.theme.colors.ui.primary};
+`;
+
+const TextCover = styled.View`
+flex:1
+  justify-content: center;
+  align-items: center;
+`;
+
 const FavouriteMoviesList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 0,
@@ -15,29 +29,33 @@ const FavouriteMoviesList = styled(FlatList).attrs({
   flex: 1;
 `;
 
-const MovieCover = styled(Card.Cover)`
-  background-color: gray;
-  padding: 0px;
-  width: 100px;
-  height: 100px;
-  margin: 5px;
-`;
-
 export const FavouriteMoviesScreen = ({ navigation }) => {
   const { favouriteMovies } = useContext(FavouriteMovieContext);
 
   return (
     <SafeArea>
-      <FavouriteMoviesList
-        data={favouriteMovies}
-        numColumns={4}
-        keyExtractor={(item) => {
-          return `${item.originalTitle}${item.id}`;
-        }}
-        renderItem={({ item }) => (
-          <MemoizedMovieCard navigation={navigation} movie={item} />
+      <MyMovieListContainer>
+        <Text variant="label"> My Movies </Text>
+        {favouriteMovies.length > 0 ? (
+          <FavouriteMoviesList
+            data={favouriteMovies}
+            numColumns={2}
+            keyExtractor={(item) => {
+              return `${item.originalTitle}${item.id}`;
+            }}
+            renderItem={({ item }) => (
+              <MemoizedMovieCard navigation={navigation} movie={item} />
+            )}
+          />
+        ) : (
+          <TextCover>
+            <Text variant="body">
+              Use the + add button to add movies you want to keep track of.
+              Things you add appear here.
+            </Text>
+          </TextCover>
         )}
-      />
+      </MyMovieListContainer>
     </SafeArea>
   );
 };

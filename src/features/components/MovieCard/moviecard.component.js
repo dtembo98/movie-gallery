@@ -1,12 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { FavouriteMovieContext } from "../../../services/favourites/favourites.context";
 import { ImageBackground, TouchableOpacity } from "react-native";
-
+import { BlurView } from "expo-blur";
 import styled from "styled-components/native";
 import { Card, Button } from "react-native-paper";
+
 import { config } from "../../../services/config";
-import { BlurView } from "expo-blur";
-import { useEffect } from "react/cjs/react.development";
+import { FavouriteButton } from "../../../components/favourite-button/favourite-button.component";
+import { DetailsButton } from "../../../components/details-button/details-button.component";
 
 const CardWrapper = styled(Card)`
   background-color: #252250;
@@ -25,20 +26,6 @@ export const CardImageCover = styled(ImageBackground)`
   resize-mode: contain;
 `;
 
-const MovieTitle = styled.Text`
-  color: #fff;
-  font-weight: bold;
-`;
-
-const TitleContainer = styled.View`
-  background-color: #013c5b;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  height: 30px;
-  padding: 6px;
-  opacity: 0.7;
-`;
 const MovieCardActions = styled(BlurView).attrs({
   intensity: 90,
   tint: "dark",
@@ -50,15 +37,7 @@ const MovieCardActions = styled(BlurView).attrs({
   justify-content: center;
   align-items: center;
 `;
-const MovieCardButton = styled(Button).attrs({
-  mode: "outlined",
-  color: "#fff",
-})`
-  width: 100px;
-  opacity: 1;
-  margin: 4px;
-  border: #fff 1px;
-`;
+
 export function MovieCard({ movie = {}, navigation }) {
   const [isCardPressed, setIsCardPressed] = useState(false);
   const [isAddedToList, setIsAddedToList] = useState(false);
@@ -76,18 +55,6 @@ export function MovieCard({ movie = {}, navigation }) {
 
   const handlePress = () => {
     setIsCardPressed(!isCardPressed);
-  };
-  const handleDetails = () => {
-    return navigation.navigate("MovieDetails", { movie });
-  };
-  const handleAdd = () => {
-    if (isAddedToList) {
-      removeFromFavouriteList(movie.id);
-      setIsAddedToList(!isAddedToList);
-    } else {
-      addToFavouriteList(movie);
-      setIsAddedToList(!isAddedToList);
-    }
   };
 
   const image = {
@@ -108,10 +75,8 @@ export function MovieCard({ movie = {}, navigation }) {
         <CardImageCover source={image}>
           {isCardPressed ? (
             <MovieCardActions>
-              <MovieCardButton onPress={handleDetails}>Details</MovieCardButton>
-              <MovieCardButton onPress={handleAdd}>
-                {isAddedToList ? "- Remove" : " + Add"}
-              </MovieCardButton>
+              <DetailsButton movie={movie} navigation={navigation} />
+              <FavouriteButton movie={movie} />
             </MovieCardActions>
           ) : null}
           {/* <TitleContainer>

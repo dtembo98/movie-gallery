@@ -1,4 +1,4 @@
-import { SafeAreaView, StatusBar, ImageBackground } from "react-native";
+import { ImageBackground } from "react-native";
 import styled from "styled-components/native";
 import { Card, Button } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
@@ -25,26 +25,30 @@ export const Text = styled.Text`
 export const TextContainer = styled.View`
   flex: 1;
   justify-content: flex-end;
-  padding: 24px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 export const TextDetails = styled.View`
   flex-direction: row;
-  margin-bottom: 5px;
+  margin-bottom: ${(props) => props.theme.space[0]};
+  padding-left: ${(props) => props.theme.space[2]};
 `;
 
 export const HeaderButton = styled(Button).attrs({
   mode: "contained",
   color: "#fff",
 })`
-  width: 100px;
-  padding-left: 5px;
-  margin: 5px;
+  width: ${(props) => props.theme.sizes[3]};
+  padding-left: ${(props) => props.theme.space[0]};
+  margin: ${(props) => props.theme.space[1]};
+  height:30px
+  justify-content: center;
   border: 1px #fff;
 `;
 
 export const HeaderButtonContainer = styled.View`
+  width:20px
   flex-direction: row;
-  margin-left: 5px;
+  margin: ${(props) => props.theme.space[1]};
 `;
 
 export const HeaderLinearGradient = styled(LinearGradient).attrs({

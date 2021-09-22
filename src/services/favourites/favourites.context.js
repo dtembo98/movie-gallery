@@ -33,16 +33,13 @@ export const FavouriteMovieContextProvider = ({ children }) => {
   };
 
   const addFavouriteMovie = (movie) => {
-    console.log("add movie   ", movie);
     setFavouritesMovies([...favouriteMovies, movie]);
   };
 
-  const removeFavouriteMovie = (movieId) => {
-    // console.log("remove movie with id of  ", movieId);
-    const newFavouriteMovies = favouriteMovies.filter(
-      (movie) => movie.id == movieId
-    );
-    console.log("removed ", newFavouriteMovies);
+  const removeFavouriteMovie = (movie) => {
+    console.log("remove movie with id of  ");
+    const newFavouriteMovies = favouriteMovies.filter((m) => m.id !== movie.id);
+
     setFavouritesMovies(newFavouriteMovies);
   };
 
