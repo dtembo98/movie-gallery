@@ -5,16 +5,8 @@ import { Text, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { HomeNavigator } from "./home.navigator";
-import { FavouriteMoviesScreen } from "../../features/screens/favourite-movies.screen";
-
+import { FavouriteMoviesScreen } from "../../features/movies/screens/favourite-movies/favourite-movies.screen";
 const Tab = createBottomTabNavigator();
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
 
 function SettingsScreen() {
   return (

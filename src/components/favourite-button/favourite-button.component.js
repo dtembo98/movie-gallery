@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
-import { Card, Button } from "react-native-paper";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import { FavouriteMovieContext } from "../../services/favourites/favourites.context";

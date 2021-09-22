@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Ionicons } from "@expo/vector-icons";
 
-import { config } from "../../../services/config";
-import { FavouriteButton } from "../../../components/favourite-button/favourite-button.component";
-import { DetailsButton } from "../../../components/details-button/details-button.component";
-import { Text } from "../../../components/typography/text.component";
+import { config } from "../../../../services/config";
+import { FavouriteButton } from "../../../../components/favourite-button/favourite-button.component";
+import { DetailsButton } from "../../../../components/details-button/details-button.component";
+import { Text } from "../../../../components/typography/text.component";
 import {
   HeaderWrapper,
   Title,
@@ -19,11 +18,15 @@ export const Header = ({ movies = [], navigation }) => {
   const [movie, setMovie] = useState({});
   const [genre, setGenre] = useState();
 
-  useEffect(() => {
+  const loadData = () => {
     const { genre, data } = movies[0];
     const firstMovie = data[0];
     setMovie(firstMovie);
     setGenre(genre);
+  };
+
+  useEffect(() => {
+    loadData();
   }, []);
 
   const image = {

@@ -37,7 +37,6 @@ export const FavouriteMovieContextProvider = ({ children }) => {
   };
 
   const removeFavouriteMovie = (movie) => {
-    console.log("remove movie with id of  ");
     const newFavouriteMovies = favouriteMovies.filter((m) => m.id !== movie.id);
 
     setFavouritesMovies(newFavouriteMovies);

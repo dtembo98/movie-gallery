@@ -4,7 +4,7 @@ import { Card, Button } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
 
 export const HeaderWrapper = styled(Card)`
-  flex: 0.4;
+  flex: 0.5;
   background-color: #252250;
 `;
 export const Title = styled.Text`

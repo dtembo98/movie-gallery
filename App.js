@@ -6,7 +6,7 @@ import {
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
-import { MoviesContextProvider } from "./src/services/movie.context";
+import { MoviesContextProvider } from "./src/services/movies/movie.context";
 import { FavouriteMovieContextProvider } from "./src/services/favourites/favourites.context";
 import { Navigation } from "./src/infrastructure/navigation";
 import { theme } from "./src/infrastructure/theme";

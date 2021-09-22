@@ -1,6 +1,6 @@
 import camelize from "camelize";
 import axios from "axios";
-import { config } from "./config";
+import { config } from "../config";
 
 class MovieService {
   _getMovieGenres = async () => {

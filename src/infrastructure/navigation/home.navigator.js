@@ -4,9 +4,8 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 
-import { MoviesScreen } from "../../features/screens/movies.screen";
-import { MovieDetailsScreen } from "../../features/screens/movie-detail.screen";
-import { FavouriteMoviesScreen } from "../../features/screens/favourite-movies.screen";
+import { MoviesScreen } from "../../features/movies/screens/movies/movies.screen";
+import { MovieDetailsScreen } from "../../features/movies/screens/movie-detail/movie-detail.screen";
 
 const HomeStack = createStackNavigator();
 

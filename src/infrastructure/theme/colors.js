@@ -9,6 +9,7 @@ export const colors = {
   bg: {
     primary: "#172731",
     secondary: "#fff",
+    tertiary: "#808080",
   },
   text: {
     primary: "#fff",
