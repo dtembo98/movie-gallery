@@ -6,6 +6,7 @@ import {
 
 import { MoviesScreen } from "../../features/screens/movies.screen";
 import { MovieDetailsScreen } from "../../features/screens/movie-detail.screen";
+import { FavouriteMoviesScreen } from "../../features/screens/favourite-movies.screen";
 
 const HomeStack = createStackNavigator();
 

@@ -5,6 +5,7 @@ import { Text, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { HomeNavigator } from "./home.navigator";
+import { FavouriteMoviesScreen } from "../../features/screens/favourite-movies.screen";
 
 const Tab = createBottomTabNavigator();
 function HomeScreen() {
@@ -34,7 +35,7 @@ export const AppNavigator = () => (
             iconName = focused ? "home" : "home";
           } else if (route.name === "Settings") {
             iconName = focused ? "account" : "account";
-          } else if (route.name === "My stuff") {
+          } else if (route.name === "My Movies") {
             iconName = focused ? "movie" : "movie";
           }
 
@@ -52,7 +53,7 @@ export const AppNavigator = () => (
         },
       })}>
       <Tab.Screen name="Home" component={HomeNavigator} />
-      <Tab.Screen name="My stuff" component={HomeScreen} />
+      <Tab.Screen name="My Movies" component={FavouriteMoviesScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   </NavigationContainer>

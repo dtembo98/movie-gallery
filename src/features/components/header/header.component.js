@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import { config } from "../../../services/config";
+import { Text } from "../../../components/typography/text.component";
 import {
   HeaderWrapper,
   Title,
   ImageCover,
-  Text,
   TextContainer,
   TextDetails,
   HeaderButton,
@@ -13,9 +13,13 @@ import {
   HeaderLinearGradient,
 } from "./header.styles";
 
-export const Header = ({ movies = [] }) => {
+export const Header = ({ movies = [], navigation }) => {
   const [movie, setMovie] = useState({});
   const [genre, setGenre] = useState();
+
+  const handleOnPressDetailsButton = () => {
+    return navigation.navigate("MovieDetails", { movie: movie });
+  };
 
   useEffect(() => {
     const { genre, data } = movies[0];
@@ -49,7 +53,9 @@ export const Header = ({ movies = [] }) => {
             </Text>
           </TextDetails>
           <HeaderButtonContainer>
-            <HeaderButton>Details</HeaderButton>
+            <HeaderButton onPress={handleOnPressDetailsButton}>
+              Details
+            </HeaderButton>
             <HeaderButton>Add +</HeaderButton>
           </HeaderButtonContainer>
         </TextContainer>

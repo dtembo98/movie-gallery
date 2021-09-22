@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { FavouriteMovieContext } from "../../../services/favourites/favourites.context";
 import { ImageBackground, TouchableOpacity } from "react-native";
 
 import styled from "styled-components/native";
@@ -54,14 +55,25 @@ const MovieCardButton = styled(Button).attrs({
   color: "#fff",
 })`
   width: 100px;
-  padding-left: 10px;
   opacity: 1;
   margin: 4px;
   border: #fff 1px;
 `;
 export function MovieCard({ movie = {}, navigation }) {
   const [isCardPressed, setIsCardPressed] = useState(false);
+  const [isAddedToList, setIsAddedToList] = useState(false);
+
   const [cardMovie, setCardMovie] = useState(null);
+  const { favouriteMovies, addToFavouriteList, removeFromFavouriteList } =
+    useContext(FavouriteMovieContext);
+
+  useEffect(() => {
+    const isFavouriteMovie = favouriteMovies.find(
+      (favouriteMovie) => favouriteMovie.id === movie.id
+    );
+    setIsAddedToList(isFavouriteMovie);
+  }, []);
+
   const handlePress = () => {
     setIsCardPressed(!isCardPressed);
   };
@@ -69,7 +81,13 @@ export function MovieCard({ movie = {}, navigation }) {
     return navigation.navigate("MovieDetails", { movie });
   };
   const handleAdd = () => {
-    console.log("Add");
+    if (isAddedToList) {
+      removeFromFavouriteList(movie.id);
+      setIsAddedToList(!isAddedToList);
+    } else {
+      addToFavouriteList(movie);
+      setIsAddedToList(!isAddedToList);
+    }
   };
 
   const image = {
@@ -77,7 +95,7 @@ export function MovieCard({ movie = {}, navigation }) {
       ? config.BASE_IMAGE_URL +
         `/${config.IMAGE_SIZE.MD}` +
         cardMovie.posterPath
-      : "https://lh3.googleusercontent.com/proxy/BOwUj6M_wMToA6jVxqt9ATQpbAk2uM50NmjLlXwpL9rmPOlXj6vcs05Qb5Laslx-MDIGSItnY0uqd5nlcJd1V-0if7VEE3yDX_ONZh3ZgISgIUojhmzxrjKa_kFGvVyl4lxJ583nVPdXroOuHLcS996vWvJk0LL9JIldrrLLKFBh4XXfcRHTQZVzJC8jo9o-waPtjQVsvkGU",
+      : config.NO_IMAGE,
   };
   useEffect(() => {
     if (movie) {
@@ -91,7 +109,9 @@ export function MovieCard({ movie = {}, navigation }) {
           {isCardPressed ? (
             <MovieCardActions>
               <MovieCardButton onPress={handleDetails}>Details</MovieCardButton>
-              <MovieCardButton onPress={handleAdd}>+ Add</MovieCardButton>
+              <MovieCardButton onPress={handleAdd}>
+                {isAddedToList ? "- Remove" : " + Add"}
+              </MovieCardButton>
             </MovieCardActions>
           ) : null}
           {/* <TitleContainer>

@@ -15,6 +15,7 @@ export const Title = styled.Text`
 export const ImageCover = styled(ImageBackground)`
   flex: 1;
 `;
+
 export const Text = styled.Text`
   font-size: 16px;
   color: #fff;
@@ -36,8 +37,9 @@ export const HeaderButton = styled(Button).attrs({
   color: "#fff",
 })`
   width: 100px;
-  padding-left: 10px;
+  padding-left: 5px;
   margin: 5px;
+  border: 1px #fff;
 `;
 
 export const HeaderButtonContainer = styled.View`
