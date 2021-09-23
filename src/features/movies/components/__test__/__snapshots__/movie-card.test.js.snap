@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MovieCard> it works 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#252250",
+        "borderColor": "#fff",
+        "borderRadius": 4,
+        "borderStyle": "solid",
+        "borderWidth": 1,
+        "elevation": 1,
+        "height": 200,
+        "marginBottom": 10,
+        "marginLeft": 10,
+        "marginRight": 10,
+        "marginTop": 10,
+        "shadowColor": "#000000",
+        "shadowOffset": Object {
+          "height": 0.5,
+          "width": 0,
+        },
+        "shadowOpacity": 0.24,
+        "shadowRadius": 0.75,
+        "width": 150,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
+      }
+    >
+      <View
+        accessibilityIgnoresInvertColors={true}
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "height": "50%",
+              "justifyContent": "flex-end",
+              "resizeMode": "contain",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <Image
+          index={0}
+          siblings={
+            Array [
+              "Styled(ImageBackground)",
+            ]
+          }
+          source={
+            Object {
+              "uri": "https://lh3.googleusercontent.com/proxy/BOwUj6M_wMToA6jVxqt9ATQpbAk2uM50NmjLlXwpL9rmPOlXj6vcs05Qb5Laslx-MDIGSItnY0uqd5nlcJd1V-0if7VEE3yDX_ONZh3ZgISgIUojhmzxrjKa_kFGvVyl4lxJ583nVPdXroOuHLcS996vWvJk0LL9JIldrrLLKFBh4XXfcRHTQZVzJC8jo9o-waPtjQVsvkGU",
+            }
+          }
+          style={
+            Array [
+              Object {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              Object {
+                "height": undefined,
+                "width": undefined,
+              },
+              undefined,
+            ]
+          }
+          total={1}
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<MovieCard> render without issues 1`] = `
+<Fragment>
+  <ForwardRef
+    onPress={[Function]}
+  >
+    <Styled(withTheme(Card))>
+      <Styled(ImageBackground)
+        source={
+          Object {
+            "uri": "https://lh3.googleusercontent.com/proxy/BOwUj6M_wMToA6jVxqt9ATQpbAk2uM50NmjLlXwpL9rmPOlXj6vcs05Qb5Laslx-MDIGSItnY0uqd5nlcJd1V-0if7VEE3yDX_ONZh3ZgISgIUojhmzxrjKa_kFGvVyl4lxJ583nVPdXroOuHLcS996vWvJk0LL9JIldrrLLKFBh4XXfcRHTQZVzJC8jo9o-waPtjQVsvkGU",
+          }
+        }
+      />
+    </Styled(withTheme(Card))>
+  </ForwardRef>
+</Fragment>
+`;

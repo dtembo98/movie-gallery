@@ -1,5 +1,6 @@
+// INSERT MOVIE DB API KEY
 export const config = {
-  API_KEY: "9be5962f75cabd26c04eb4443674e0d2",
+  API_KEY: "",
   BASE_URL: "https://api.themoviedb.org/3",
   BASE_IMAGE_URL: "https://image.tmdb.org/t/p",
   NO_IMAGE:

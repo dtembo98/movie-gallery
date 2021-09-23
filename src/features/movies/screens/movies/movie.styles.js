@@ -1,6 +1,6 @@
 import { SafeAreaView } from "react-native";
 import styled from "styled-components/native";
-import { ActivityIndicator, Colors } from "react-native-paper";
+import { ActivityIndicator } from "react-native-paper";
 
 export const SafeArea = styled(SafeAreaView)`
   flex: 1;

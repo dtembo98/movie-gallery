@@ -15,7 +15,7 @@ const CardWrapper = styled(Card)`
   margin: 10px;
   border: 1px #fff;
 `;
-export const CardImageCover = styled(ImageBackground)`
+const CardImageCover = styled(ImageBackground)`
   flex: 1;
   height: 15px;
   justify-content: flex-end;
@@ -37,7 +37,7 @@ const MovieCardActions = styled(BlurView).attrs({
   align-items: center;
 `;
 
-export function MovieCard({ movie = {}, navigation }) {
+export const MovieCard = ({ movie = {}, navigation }) => {
   const [isCardPressed, setIsCardPressed] = useState(false);
   const [cardMovie, setCardMovie] = useState(null);
 
@@ -75,6 +75,6 @@ export function MovieCard({ movie = {}, navigation }) {
       </TouchableOpacity>
     </>
   );
-}
+};
 
 export const MemoizedMovieCard = React.memo(MovieCard);
