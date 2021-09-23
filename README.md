@@ -13,6 +13,15 @@ To run this code make sure you have the following.
 
 ## Installation
 Step 1: Clone the repository
+
 Step 2: Cd into the directory 
+
 Step 3: from the directory navigate to services directory and open a file ```config.js ```  and insert the movie db API KEY
+
 Step 4: Run the command ```yarn install ``` or ```npm install ``` depending on the npm package you use. (if npm make sure to delete the yarn.lock file to avoid conflicts)
+
+## Pending Task
+
+1. Add search functionality
+2. Add user Authentication
+
