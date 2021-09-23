@@ -19,6 +19,7 @@ export const MoviesContextProvider = ({ children }) => {
       setError(err);
     }
   };
+
   useEffect(() => {
     fetchMovies();
   }, []);

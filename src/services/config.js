@@ -1,5 +1,5 @@
 export const config = {
-  API_KEY: "18783d19189b3c4c0abc3c8e3080d3da",
+  API_KEY: "9be5962f75cabd26c04eb4443674e0d2",
   BASE_URL: "https://api.themoviedb.org/3",
   BASE_IMAGE_URL: "https://image.tmdb.org/t/p",
   NO_IMAGE:

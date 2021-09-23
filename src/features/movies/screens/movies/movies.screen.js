@@ -6,6 +6,7 @@ import { MoviesContext } from "../../../../services/movies/movie.context";
 import { FavouriteMovieContext } from "../../../../services/favourites/favourites.context";
 import { Header } from "../../components/header/header.component";
 import { MemoizedMovieCard } from "../../components/MovieCard/moviecard.component";
+import { FadeInView } from "../../../../components/animation/fade.animation";
 import {
   SafeArea,
   CardContainer,
