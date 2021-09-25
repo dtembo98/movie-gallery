@@ -32,6 +32,16 @@ export const FavouriteMovieContextProvider = ({ children }) => {
     }
   };
 
+  const clearAllMovies = async () => {
+    try {
+      const jsonValue = JSON.stringify([]);
+      await AsyncStorage.setItem("@favourutes", jsonValue);
+      setFavouritesMovies([]);
+    } catch (error) {
+      console.log("error setting item");
+    }
+  };
+
   const addFavouriteMovie = (movie) => {
     setFavouritesMovies([...favouriteMovies, movie]);
   };
@@ -48,6 +58,7 @@ export const FavouriteMovieContextProvider = ({ children }) => {
         favouriteMovies,
         addToFavouriteList: addFavouriteMovie,
         removeFromFavouriteList: removeFavouriteMovie,
+        deleteAllMovies: clearAllMovies,
       }}>
       {children}
     </FavouriteMovieContext.Provider>

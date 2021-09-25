@@ -1,6 +1,6 @@
 import { SafeAreaView } from "react-native";
 import styled from "styled-components/native";
-import { ActivityIndicator } from "react-native-paper";
+import { ActivityIndicator, List } from "react-native-paper";
 
 export const SafeArea = styled(SafeAreaView)`
   flex: 1;
@@ -21,13 +21,11 @@ export const LoadingContainer = styled.View`
   left: 50%;
 `;
 export const MyMovieListContainer = styled.View`
-  flex: 0.2
+
   padding-left:10px
   margin-top: 4px;
   justify-content: center;
   background-color: ${(props) => props.theme.colors.bg.secondary};
-  
-  
 `;
 
 export const NoMovieText = styled.Text`
@@ -58,4 +56,26 @@ export const GenreTextContainer = styled.View`
 `;
 export const GenreText = styled.Text`
   color: red;
+`;
+
+export const CollapsibleContainer = styled(List.Accordion).attrs({
+  title: "My movies",
+  color: "red",
+  titleStyle: {
+    color: "black",
+    fontSize: 16,
+    paddingLeft: 5,
+    fontWeight: "bold",
+  },
+})``;
+
+export const NoIntenetContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  color: black;
+`;
+
+export const NoInternetText = styled.Text`
+  color: black;
 `;

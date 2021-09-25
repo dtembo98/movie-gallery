@@ -6,15 +6,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { HomeNavigator } from "./home.navigator";
 import { FavouriteMoviesScreen } from "../../features/movies/screens/favourite-movies/favourite-movies.screen";
-const Tab = createBottomTabNavigator();
+import { MoviesSettingsScreen } from "../../features/movies/screens/settings/movie-setting.screen";
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+const Tab = createBottomTabNavigator();
 
 export const AppNavigator = () => (
   <NavigationContainer>
@@ -46,7 +40,7 @@ export const AppNavigator = () => (
       })}>
       <Tab.Screen name="Home" component={HomeNavigator} />
       <Tab.Screen name="My Movies" component={FavouriteMoviesScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Settings" component={MoviesSettingsScreen} />
     </Tab.Navigator>
   </NavigationContainer>
 );

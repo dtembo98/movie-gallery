@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { config } from "../../../../services/config";
 import movieService from "../../../../services/movies/movie.service";
 import { CloseButton } from "../../components/close-button/close-button.component";
-import { FadeInView } from "../../../../components/animation/fade.animation";
+
 import {
   SafeArea,
   MovieDetailsCard,

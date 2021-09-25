@@ -18,6 +18,7 @@ import {
   GenreListHeadingContainer,
   GenreTextContainer,
   GenreText,
+  CollapsibleContainer,
 } from "./movie.styles";
 
 const HorizontalRender = ({ item, navigation }) => (
@@ -57,22 +58,22 @@ export const MoviesScreen = ({ navigation }) => {
       ) : (
         <>
           <Header navigation={navigation} movies={movies} />
-          <GenreListHeadingContainer>
-            <MoviesHeaderText>My Movies </MoviesHeaderText>
-          </GenreListHeadingContainer>
-          <MyMovieListContainer>
+          <CollapsibleContainer>
             {favouriteMovies.length > 0 ? (
-              <ScrollView horizontal={true} scrollEventThrottle={16}>
-                {favouriteMovies.map((item) => (
-                  <MyMovieListContainer key={`${item.originalTitle}${item.id}`}>
-                    <MemoizedMovieCard movie={item} navigation={navigation} />
-                  </MyMovieListContainer>
-                ))}
-              </ScrollView>
+              <MyMovieListContainer>
+                <ScrollView horizontal={true} scrollEventThrottle={16}>
+                  {favouriteMovies.map((item) => (
+                    <MyMovieListContainer
+                      key={`${item.originalTitle}${item.id}`}>
+                      <MemoizedMovieCard movie={item} navigation={navigation} />
+                    </MyMovieListContainer>
+                  ))}
+                </ScrollView>
+              </MyMovieListContainer>
             ) : (
               <NoMovieText>No Movies added yet</NoMovieText>
             )}
-          </MyMovieListContainer>
+          </CollapsibleContainer>
           <GenreListHeadingContainer>
             <MoviesHeaderText>Movies by genre</MoviesHeaderText>
           </GenreListHeadingContainer>

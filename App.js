@@ -5,7 +5,7 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
-import { Text } from "./src/components/typography/text.component";
+import styled from "styled-components";
 
 import { MoviesContextProvider } from "./src/services/movies/movie.context";
 import { FavouriteMovieContextProvider } from "./src/services/favourites/favourites.context";
@@ -27,6 +27,17 @@ export default function App() {
     return null;
   }
 
+  const Container = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  `;
+
+  const Text = styled.Text`
+    color: black;
+  `;
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -37,7 +48,9 @@ export default function App() {
             </FavouriteMovieContextProvider>
           </MoviesContextProvider>
         ) : (
-          <Text>it seems you're offline</Text>
+          <Container>
+            <Text>it seems you're offline</Text>
+          </Container>
         )}
       </ThemeProvider>
     </>
