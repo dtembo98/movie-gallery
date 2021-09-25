@@ -27,3 +27,6 @@ Step 4: Run the command ```yarn install ``` or ```npm install ``` depending on t
 3. Add watch trailer functionality
 4. Add tv series 
 
+### android expo build link
+
+https://expo.io/@dtembo965/MovieGallery
