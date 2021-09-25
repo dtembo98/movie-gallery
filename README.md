@@ -4,7 +4,7 @@
 Movie Gallery is a simple reactnative  based app that shows different movies by genres and details for each movie.
 You can added a movie to your favourite list.It fetches the movies from [themoviedb](https://developers.themoviedb.org/3/movies/get-movie-details)
 
-## Prerequesites
+## Pre requesites
 To run this code make sure you have the following.
 
 1. Node js
@@ -20,8 +20,9 @@ Step 3: from the directory navigate to services directory and open a file ```con
 
 Step 4: Run the command ```yarn install ``` or ```npm install ``` depending on the npm package you use. (if npm make sure to delete the yarn.lock file to avoid conflicts)
 
-## Pending Task
+## improvements
 
 1. Add search functionality
 2. Add user Authentication
+3. Add watch trailer functionality
 
