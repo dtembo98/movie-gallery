@@ -25,4 +25,5 @@ Step 4: Run the command ```yarn install ``` or ```npm install ``` depending on t
 1. Add search functionality
 2. Add user Authentication
 3. Add watch trailer functionality
+4. Add tv series 
 
